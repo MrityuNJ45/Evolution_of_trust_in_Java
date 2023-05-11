@@ -13,11 +13,11 @@ public class AlternatePlayer implements Player{
 
     @Override
     public Choice playerChoice() {
+        this.turn++;
         if(this.turn % 2 == 0){
-            this.turn++;
             return Choice.COOPERATE;
         }
-        this.turn++;
+
         return Choice.CHEAT;
     }
 }
