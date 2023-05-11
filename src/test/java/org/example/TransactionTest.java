@@ -52,8 +52,8 @@ class TransactionTest {
         Scorer scorer = new Scorer(playerOne, playerTwo);
         Transaction transaction = new Transaction(playerOne, playerTwo, scorer);
         transaction.transactionOneRound();
-        assertEquals(-1,scorer.getPlayerScore(playerOne));
-        assertEquals(3,scorer.getPlayerScore(playerTwo));
+        assertEquals(3,scorer.getPlayerScore(playerOne));
+        assertEquals(-1,scorer.getPlayerScore(playerTwo));
     }
 
     @Test
@@ -92,6 +92,44 @@ class TransactionTest {
             transaction.winner();
         });
 
+        assertEquals("Match is drawn so no winner", thrown.getMessage());
+
+    }
+
+    @Test
+    public void expectsCheatPlayerToAlwaysWinWhenPlayedWithCooperatePlayerForMoreRounds(){
+        Player playerOne = new CheatPlayer("Mohit");
+        Player playerTwo = new CooperatePlayer("Manish");
+        Scorer scorer = new Scorer(playerOne, playerTwo);
+        Transaction transaction = new Transaction(playerOne, playerTwo, scorer);
+        transaction.transactionsForMoreRound();
+        Player winner = transaction.winner();
+        assertEquals(playerOne, winner);
+    }
+
+    @Test
+    public void expectsToThrowExceptionWhenBothCooperatePlayersPlaysWithEachOtherForMoreRounds(){
+        Player playerOne = new CooperatePlayer("Mohit");
+        Player playerTwo = new CooperatePlayer("Manish");
+        Transaction transaction = new Transaction(playerOne, playerTwo);
+        transaction.transactionsForMoreRound();
+        IllegalStateException thrown = assertThrows(IllegalStateException.class, () -> {
+            transaction.winner();
+        });
+        assertEquals("Match is drawn so no winner", thrown.getMessage());
+
+    }
+
+
+    @Test
+    public void expectsToThrowExceptionWhenBothCheatPlayersPlaysWithEachOtherForMoreRounds(){
+        Player playerOne = new CheatPlayer("Mohit");
+        Player playerTwo = new CheatPlayer("Manish");
+        Transaction transaction = new Transaction(playerOne, playerTwo);
+        transaction.transactionsForMoreRound();
+        IllegalStateException thrown = assertThrows(IllegalStateException.class, () -> {
+            transaction.winner();
+        });
         assertEquals("Match is drawn so no winner", thrown.getMessage());
 
     }

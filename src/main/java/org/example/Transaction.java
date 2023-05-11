@@ -2,6 +2,7 @@ package org.example;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class Transaction {
 
@@ -34,6 +35,16 @@ public class Transaction {
         List<Integer> scores = this.transactionRules.getScores(Arrays.asList(this.playerOne.playerChoice(), this.playerTwo.playerChoice()));
         this.scorer.updatePlayerScore(this.playerOne,scores.get(0));
         this.scorer.updatePlayerScore(this.playerTwo,scores.get(1));
+
+    }
+
+    public void transactionsForMoreRound(){
+
+        Random random = new Random();
+        Integer rounds = random.nextInt(Math.abs(3 - 7)) + 3;
+        for(int round = 1; round <= rounds; round++){
+            this.transactionOneRound();
+        }
 
     }
 
