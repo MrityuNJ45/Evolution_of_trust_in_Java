@@ -1,10 +1,10 @@
 package org.example;
 
-public class CooperatePlayer implements Player{
+public class CooperatePlayer implements Player {
 
     private String name;
 
-    public CooperatePlayer(String name){
+    public CooperatePlayer(String name) {
         this.name = name;
     }
 

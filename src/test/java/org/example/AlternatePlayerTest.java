@@ -7,26 +7,26 @@ import static org.junit.jupiter.api.Assertions.*;
 class AlternatePlayerTest {
 
     @Test
-    public void expectsToCreateAlternatePlayer(){
+    public void expectsToCreateAlternatePlayer() {
         assertDoesNotThrow(() -> new AlternatePlayer("Pradeep"));
 
     }
 
     @Test
-    public void expectsToChooseCheatWhenTurnIsOdd(){
+    public void expectsToChooseCheatWhenTurnIsOdd() {
 
         Player alternatePlayer = new AlternatePlayer("Pradeep");
         Choice choice = alternatePlayer.playerChoice();
-        assertEquals(choice,Choice.CHEAT);
+        assertEquals(choice, Choice.CHEAT);
     }
 
     @Test
-    public void expectsToChooseCooperateWhenTurnIsOdd(){
+    public void expectsToChooseCooperateWhenTurnIsOdd() {
 
         Player alternatePlayer = new AlternatePlayer("Pradeep");
         alternatePlayer.playerChoice(); // first turn
         Choice choice = alternatePlayer.playerChoice(); // second turn
-        assertEquals(choice,Choice.COOPERATE);
+        assertEquals(choice, Choice.COOPERATE);
     }
 
 

@@ -10,34 +10,33 @@ public class ScoreCard {
 
     private Integer playerTwoScore;
 
-   private ScoringRules scoringRules = new ScoringRules();
+    private ScoringRules scoringRules = new ScoringRules();
 
 
-    public ScoreCard(){
+    public ScoreCard() {
 
         this.playerOneScore = 0;
         this.playerTwoScore = 0;
 
     }
 
-    public void update(List<Choice> choices){
+    public void update(List<Choice> choices) {
 
-       List<Integer> scores = this.scoringRules.getScores(choices);
-       playerOneScore += scores.get(0);
-       playerTwoScore += scores.get(1);
+        List<Integer> scores = this.scoringRules.getScores(choices);
+        playerOneScore += scores.get(0);
+        playerTwoScore += scores.get(1);
 
     }
 
-    public Integer winner(){
-        if(this.playerOneScore > this.playerTwoScore){
+    public Integer winner() {
+        if (this.playerOneScore > this.playerTwoScore) {
             return +1;
         }
-        if(this.playerTwoScore > this.playerOneScore){
+        if (this.playerTwoScore > this.playerOneScore) {
             return -1;
         }
         return 0;
     }
-
 
 
 }

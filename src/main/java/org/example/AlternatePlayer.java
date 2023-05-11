@@ -1,6 +1,6 @@
 package org.example;
 
-public class AlternatePlayer implements Player{
+public class AlternatePlayer implements Player {
 
     private String name;
 
@@ -14,7 +14,7 @@ public class AlternatePlayer implements Player{
     @Override
     public Choice playerChoice() {
         this.turn++;
-        if(this.turn % 2 == 0){
+        if (this.turn % 2 == 0) {
             return Choice.COOPERATE;
         }
 

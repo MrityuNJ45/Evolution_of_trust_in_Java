@@ -1,6 +1,6 @@
 package org.example;
 
-public class CheatPlayer implements Player{
+public class CheatPlayer implements Player {
 
     private String name;
 

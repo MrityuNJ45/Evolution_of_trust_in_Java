@@ -18,19 +18,11 @@ public class Transaction {
 
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
-        this.scoreCard = new ScoreCard(playerOne, playerTwo);
+        this.scoreCard = new ScoreCard();
 
     }
 
-    public Transaction(Player playerOne, Player playerTwo, ScoreCard scorer) {
-
-        this.playerOne = playerOne;
-        this.playerTwo = playerTwo;
-        this.scoreCard = scorer;
-
-    }
-
-    public void transactionsForMoreRound() {
+    public void transactions() {
 
         Random random = new Random();
         Integer rounds = random.nextInt(MAX_ROUND_LIMIT - MIN_ROUND_LIMIT) + MIN_ROUND_LIMIT;
@@ -43,10 +35,10 @@ public class Transaction {
     public Player winner() {
 
         Integer winnerDeterminer = this.scoreCard.winner();
-        if(winnerDeterminer == 0){
+        if (winnerDeterminer == 0) {
             return null;
         }
-        if(winnerDeterminer == 1){
+        if (winnerDeterminer == 1) {
             return playerOne;
         }
         return playerTwo;
