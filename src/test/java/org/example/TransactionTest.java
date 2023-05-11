@@ -17,7 +17,7 @@ class TransactionTest {
     public void expectsToCreateATransactionObjectThrow2ndParameterizedConstructor(){
         Player playerOne = new CheatPlayer("Mohit");
         Player playerTwo = new CooperatePlayer("Manish");
-        Scorer scorer = new Scorer(playerOne, playerTwo);
+        ScoreCard scorer = new ScoreCard(playerOne, playerTwo);
         assertDoesNotThrow(()->new Transaction(playerOne,playerTwo,scorer));
     }
 
@@ -26,7 +26,7 @@ class TransactionTest {
 
         Player playerOne = new CheatPlayer("Mohit");
         Player playerTwo = new CheatPlayer("Manish");
-        Scorer scorer = new Scorer(playerOne, playerTwo);
+        ScoreCard scorer = new ScoreCard(playerOne, playerTwo);
         Transaction transaction = new Transaction(playerOne, playerTwo, scorer);
         transaction.transactionOneRound();
         assertEquals(0,scorer.getPlayerScore(playerOne));
@@ -38,7 +38,7 @@ class TransactionTest {
     public void expectsFirstPlayerScoreToBeNegative1AndOtherToBe3WhenFirstCooperatesAndOtherCheats(){
         Player playerOne = new CooperatePlayer("Mohit");
         Player playerTwo = new CheatPlayer("Harish");
-        Scorer scorer = new Scorer(playerOne, playerTwo);
+        ScoreCard scorer = new ScoreCard(playerOne, playerTwo);
         Transaction transaction = new Transaction(playerOne, playerTwo, scorer);
         transaction.transactionOneRound();
         assertEquals(-1,scorer.getPlayerScore(playerOne));
@@ -49,7 +49,7 @@ class TransactionTest {
     public void expectsFirstPlayerScoreToBe3AndOtherToBeNegative1WhenFirstCheatsAndOtherCooperates(){
         Player playerOne = new CheatPlayer("Mohit");
         Player playerTwo = new CooperatePlayer("Harish");
-        Scorer scorer = new Scorer(playerOne, playerTwo);
+        ScoreCard scorer = new ScoreCard(playerOne, playerTwo);
         Transaction transaction = new Transaction(playerOne, playerTwo, scorer);
         transaction.transactionOneRound();
         assertEquals(3,scorer.getPlayerScore(playerOne));
@@ -61,7 +61,7 @@ class TransactionTest {
 
         Player playerOne = new CooperatePlayer("Mohit");
         Player playerTwo = new CooperatePlayer("Manish");
-        Scorer scorer = new Scorer(playerOne, playerTwo);
+        ScoreCard scorer = new ScoreCard(playerOne, playerTwo);
         Transaction transaction = new Transaction(playerOne, playerTwo, scorer);
         transaction.transactionOneRound();
         assertEquals(2,scorer.getPlayerScore(playerOne));
@@ -73,7 +73,7 @@ class TransactionTest {
     public void expectsCheatedPlayerToWinWhenMatchedWithCooperatePlayer(){
         Player playerOne = new CheatPlayer("Mohit");
         Player playerTwo = new CooperatePlayer("Manish");
-        Scorer scorer = new Scorer(playerOne, playerTwo);
+        ScoreCard scorer = new ScoreCard(playerOne, playerTwo);
         Transaction transaction = new Transaction(playerOne, playerTwo, scorer);
         transaction.transactionOneRound();
         assertEquals(playerOne,transaction.winner());
@@ -85,7 +85,7 @@ class TransactionTest {
 
         Player playerOne = new CheatPlayer("Mohit");
         Player playerTwo = new CheatPlayer("Manish");
-        Scorer scorer = new Scorer(playerOne, playerTwo);
+        ScoreCard scorer = new ScoreCard(playerOne, playerTwo);
         Transaction transaction = new Transaction(playerOne, playerTwo, scorer);
         transaction.transactionOneRound();
         IllegalStateException thrown = assertThrows(IllegalStateException.class, () -> {
@@ -100,7 +100,7 @@ class TransactionTest {
     public void expectsCheatPlayerToAlwaysWinWhenPlayedWithCooperatePlayerForMoreRounds(){
         Player playerOne = new CheatPlayer("Mohit");
         Player playerTwo = new CooperatePlayer("Manish");
-        Scorer scorer = new Scorer(playerOne, playerTwo);
+        ScoreCard scorer = new ScoreCard(playerOne, playerTwo);
         Transaction transaction = new Transaction(playerOne, playerTwo, scorer);
         transaction.transactionsForMoreRound();
         Player winner = transaction.winner();

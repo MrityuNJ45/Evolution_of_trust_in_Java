@@ -10,38 +10,39 @@ public class Transaction {
 
     private Player playerTwo;
 
-    private Scorer scorer;
+    private ScoreCard scoreCard;
 
-    private TransactionRules transactionRules = new TransactionRules();
+    private final Integer MIN_ROUND_LIMIT = 3;
+    private final Integer MAX_ROUND_LIMIT = 7;
+
+    //private TransactionRules transactionRules = new TransactionRules();
 
     public Transaction(Player playerOne, Player playerTwo){
 
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
-        this.scorer = new Scorer(playerOne, playerTwo);
+        this.scoreCard = new ScoreCard(playerOne, playerTwo);
 
     }
 
-    public Transaction(Player playerOne, Player playerTwo, Scorer scorer){
+    public Transaction(Player playerOne, Player playerTwo, ScoreCard scorer){
 
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
-        this.scorer = scorer;
+        this.scoreCard = scorer;
 
     }
 
     public void transactionOneRound(){
 
-        List<Integer> scores = this.transactionRules.getScores(Arrays.asList(this.playerOne.playerChoice(), this.playerTwo.playerChoice()));
-        this.scorer.updatePlayerScore(this.playerOne,scores.get(0));
-        this.scorer.updatePlayerScore(this.playerTwo,scores.get(1));
+        this.scoreCard.updatePlayerScore(Arrays.asList(playerOne.playerChoice(), playerTwo.playerChoice()));
 
     }
 
     public void transactionsForMoreRound(){
 
         Random random = new Random();
-        Integer rounds = random.nextInt(Math.abs(3 - 7)) + 3;
+        Integer rounds = random.nextInt(MAX_ROUND_LIMIT - MIN_ROUND_LIMIT) + MIN_ROUND_LIMIT;
         for(int round = 1; round <= rounds; round++){
             this.transactionOneRound();
         }
@@ -50,16 +51,7 @@ public class Transaction {
 
     public Player winner()  throws IllegalStateException{
 
-        Integer playerOneScore = this.scorer.getPlayerScore(this.playerOne);
-        Integer playerTwoScore = this.scorer.getPlayerScore(this.playerTwo);
-
-        if(playerOneScore > playerTwoScore){
-            return this.playerOne;
-        }
-        if(playerOneScore < playerTwoScore){
-            return this.playerTwo;
-        }
-        throw new IllegalStateException("Match is drawn so no winner");
+        return this.scoreCard.winner();
 
     }
 

@@ -9,7 +9,7 @@ class ScorerTest {
     @Test
     public void expectsToCreateAScorer(){
 
-          assertDoesNotThrow(() -> new Scorer(new CheatPlayer("Manish"), new CheatPlayer("Mohit")));
+          assertDoesNotThrow(() -> new ScoreCard(new CheatPlayer("Manish"), new CheatPlayer("Mohit")));
 
     }
 
@@ -18,7 +18,7 @@ class ScorerTest {
 
         Player playerOne = new CheatPlayer("Manish");
         Player playerTwo = new CooperatePlayer("Mohit");
-        Scorer scorer = new Scorer(playerOne, playerTwo);
+        ScoreCard scorer = new ScoreCard(playerOne, playerTwo);
         assertEquals(0, scorer.getPlayerScore(playerOne));
         assertEquals(0, scorer.getPlayerScore(playerTwo));
 
@@ -28,7 +28,7 @@ class ScorerTest {
     public void expectsToGetUpdatedScoreAfterUpdating(){
         Player playerOne = new CheatPlayer("Manish");
         Player playerTwo = new CooperatePlayer("Mohit");
-        Scorer scorer = new Scorer(playerOne, playerTwo);
+        ScoreCard scorer = new ScoreCard(playerOne, playerTwo);
         scorer.updatePlayerScore(playerOne,2);
         scorer.updatePlayerScore(playerTwo, 3);
         assertEquals(2, scorer.getPlayerScore(playerOne));
