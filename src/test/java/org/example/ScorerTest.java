@@ -29,8 +29,8 @@ class ScorerTest {
         Player playerOne = new CheatPlayer("Manish");
         Player playerTwo = new CooperatePlayer("Mohit");
         ScoreCard scorer = new ScoreCard(playerOne, playerTwo);
-        scorer.updatePlayerScore(playerOne,2);
-        scorer.updatePlayerScore(playerTwo, 3);
+        scorer.update(playerOne,2);
+        scorer.update(playerTwo, 3);
         assertEquals(2, scorer.getPlayerScore(playerOne));
         assertEquals(3, scorer.getPlayerScore(playerTwo));
     }

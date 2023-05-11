@@ -1,43 +1,41 @@
 package org.example;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
 public class ScoreCard {
 
-    private Player playerOne;
-
-    private Player playerTwo;
     private Integer playerOneScore;
 
     private Integer playerTwoScore;
 
-    private TransactionRules transactionRules = new TransactionRules();
+   private ScoringRules scoringRules = new ScoringRules();
 
 
-    public ScoreCard(Player playerOne, Player playerTwo){
-        this.playerOne = playerOne;
-        this.playerTwo = playerTwo;
-         this.playerOneScore = 0;
-         this.playerTwoScore = 0;
+    public ScoreCard(){
+
+        this.playerOneScore = 0;
+        this.playerTwoScore = 0;
+
     }
 
-    public void updatePlayerScore(List<Choice> choices){
+    public void update(List<Choice> choices){
 
-       List<Integer> scores = this.transactionRules.getScores(choices);
+       List<Integer> scores = this.scoringRules.getScores(choices);
        playerOneScore += scores.get(0);
        playerTwoScore += scores.get(1);
 
     }
 
-    public Player winner(){
+    public Integer winner(){
         if(this.playerOneScore > this.playerTwoScore){
-            return playerOne;
+            return +1;
         }
         if(this.playerTwoScore > this.playerOneScore){
-            return playerTwo;
+            return -1;
         }
-        return null;
+        return 0;
     }
 
 

@@ -12,12 +12,12 @@ class TransactionRulesTest {
 
     @Test
     public void expectsToCreateTransactionRulesObject(){
-        assertDoesNotThrow(() -> new TransactionRules());
+        assertDoesNotThrow(() -> new ScoringRules());
     }
 
     @Test
     public void expectsToGetAListOf2And2WhenBothHaveCooperated(){
-        TransactionRules transactionRules = new TransactionRules();
+        ScoringRules transactionRules = new ScoringRules();
         List<Choice> choices = new ArrayList<>();
         choices.add(Choice.COOPERATE);
         choices.add(Choice.COOPERATE);
@@ -28,7 +28,7 @@ class TransactionRulesTest {
 
     @Test
     public void expectsToGetAListOfNegative1And3WhenFirstCooperatesAndOtherCheats(){
-        TransactionRules transactionRules = new TransactionRules();
+        ScoringRules transactionRules = new ScoringRules();
         List<Choice> choices = new ArrayList<>();
         choices.add(Choice.COOPERATE);
         choices.add(Choice.CHEAT);
@@ -38,7 +38,7 @@ class TransactionRulesTest {
 
     @Test
     public void expectsToGetAListOf3AndNegative1WhenFirstCheatsAndOtherCooperates(){
-        TransactionRules transactionRules = new TransactionRules();
+        ScoringRules transactionRules = new ScoringRules();
         List<Choice> choices = new ArrayList<>();
         choices.add(Choice.CHEAT);
         choices.add(Choice.COOPERATE);
@@ -49,7 +49,7 @@ class TransactionRulesTest {
 
     @Test
     public void expectsToGetAListOf0And0WhenFirstBothCheats(){
-        TransactionRules transactionRules = new TransactionRules();
+        ScoringRules transactionRules = new ScoringRules();
         List<Choice> choices = new ArrayList<>();
         choices.add(Choice.CHEAT);
         choices.add(Choice.CHEAT);

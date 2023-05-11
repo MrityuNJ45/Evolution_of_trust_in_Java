@@ -1,7 +1,6 @@
 package org.example;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 public class Transaction {
@@ -15,9 +14,7 @@ public class Transaction {
     private final Integer MIN_ROUND_LIMIT = 3;
     private final Integer MAX_ROUND_LIMIT = 7;
 
-    //private TransactionRules transactionRules = new TransactionRules();
-
-    public Transaction(Player playerOne, Player playerTwo){
+    public Transaction(Player playerOne, Player playerTwo) {
 
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
@@ -25,7 +22,7 @@ public class Transaction {
 
     }
 
-    public Transaction(Player playerOne, Player playerTwo, ScoreCard scorer){
+    public Transaction(Player playerOne, Player playerTwo, ScoreCard scorer) {
 
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
@@ -33,28 +30,28 @@ public class Transaction {
 
     }
 
-    public void transactionOneRound(){
-
-        this.scoreCard.updatePlayerScore(Arrays.asList(playerOne.playerChoice(), playerTwo.playerChoice()));
-
-    }
-
-    public void transactionsForMoreRound(){
+    public void transactionsForMoreRound() {
 
         Random random = new Random();
         Integer rounds = random.nextInt(MAX_ROUND_LIMIT - MIN_ROUND_LIMIT) + MIN_ROUND_LIMIT;
-        for(int round = 1; round <= rounds; round++){
-            this.transactionOneRound();
+        for (int round = 1; round <= rounds; round++) {
+            this.scoreCard.update(Arrays.asList(playerOne.playerChoice(), playerTwo.playerChoice()));
         }
 
     }
 
-    public Player winner()  throws IllegalStateException{
+    public Player winner() {
 
-        return this.scoreCard.winner();
+        Integer winnerDeterminer = this.scoreCard.winner();
+        if(winnerDeterminer == 0){
+            return null;
+        }
+        if(winnerDeterminer == 1){
+            return playerOne;
+        }
+        return playerTwo;
 
     }
-
 
 
 }
