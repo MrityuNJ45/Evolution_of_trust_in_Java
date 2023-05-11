@@ -9,7 +9,7 @@ public class CooperatePlayer implements Player {
     }
 
     @Override
-    public Choice playerChoice() {
+    public Choice playChoice() {
         return Choice.COOPERATE;
     }
 }

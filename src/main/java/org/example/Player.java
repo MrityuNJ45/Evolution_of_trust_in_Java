@@ -2,6 +2,6 @@ package org.example;
 
 public interface Player {
 
-    public Choice playerChoice();
+    public Choice playChoice();
 
 }

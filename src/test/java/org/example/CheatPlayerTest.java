@@ -14,7 +14,7 @@ public class CheatPlayerTest {
     @Test
     public void expectsToAlwaysGiveChoiceCheat() {
         Player player = new CheatPlayer("Manish");
-        assertEquals(Choice.CHEAT, player.playerChoice());
+        assertEquals(Choice.CHEAT, player.playChoice());
     }
 
 

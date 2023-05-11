@@ -8,15 +8,13 @@ class CooperatePlayerTest {
 
     @Test
     public void expectsToCreateACooperatePlayer() {
-
         assertDoesNotThrow(() -> new CooperatePlayer("Horan"));
-
     }
 
     @Test
     public void expectsToAlwaysGiveChoiceCheat() {
         Player player = new CooperatePlayer("Manish");
-        assertEquals(Choice.COOPERATE, player.playerChoice());
+        assertEquals(Choice.COOPERATE, player.playChoice());
     }
 
 }

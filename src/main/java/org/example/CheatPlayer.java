@@ -9,7 +9,7 @@ public class CheatPlayer implements Player {
     }
 
     @Override
-    public Choice playerChoice() {
+    public Choice playChoice() {
         return Choice.CHEAT;
     }
 }

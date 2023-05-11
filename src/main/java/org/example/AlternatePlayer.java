@@ -12,7 +12,7 @@ public class AlternatePlayer implements Player {
     }
 
     @Override
-    public Choice playerChoice() {
+    public Choice playChoice() {
         this.turn++;
         if (this.turn % 2 == 0) {
             return Choice.COOPERATE;
