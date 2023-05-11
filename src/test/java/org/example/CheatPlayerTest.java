@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CheatPlayerTest {
 
     @Test
-    public void expectsToCreatACheatPlayer(){
+    public void expectsToCreateACheatPlayer(){
         assertDoesNotThrow(() -> new CheatPlayer("Manish"));
     }
 
