@@ -5,11 +5,11 @@ import java.util.HashMap;
 public class Scorer {
 
     private HashMap<Player, Integer> playersScores;
-//    private HashMap<Player, Integer> playerTwoScore;
+
 
     public Scorer(Player playerOne, Player playerTwo) {
 
-        playersScores = new HashMap<Player,Integer>();
+        playersScores = new HashMap<>();
         playersScores.put(playerOne,0);
         playersScores.put(playerTwo,0);
 
